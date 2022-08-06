@@ -9,9 +9,10 @@ import UIKit
 
 class DetailsVC: UIViewController {
     
-    var details = SchoolDetails?.self
-    var dbn : String?
-    
+    var detailsModel = DetailsViewModel()
+    var dbn : String!
+
+        
     @IBOutlet weak var schoolNameLbl: UILabel!
     @IBOutlet weak var readingScoreLbl: UILabel!
     @IBOutlet weak var mathScoreLbl: UILabel!
@@ -27,43 +28,49 @@ class DetailsVC: UIViewController {
     
     @IBOutlet weak var overViewDownloadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var contactInfoDownloadIndicator: UIActivityIndicatorView!
+
     
     override func viewDidLoad() {
-        overviewTxtView.isHidden = true
+        setupViewElements()
         
+        detailsModel.dbn.value = self.dbn!
+        detailsModel.dbn.bind({ value in
+            self.detailsModel.getSchoolDetails(completion: { [self] success in
+                DispatchQueue.main.async { [self] in
+                    
+                    self.phoneNumberLbl.text = self.detailsModel.schoolDetail?.phone_number
+                    self.emailLbl.text = self.detailsModel.schoolDetail?.website
+                    self.overviewTxtView.text = self.detailsModel.schoolDetail?.overview_paragraph
+                    self.adressLbl.text = self.detailsModel.schoolDetail?.location
+                    self.schoolNameLbl.text = self.detailsModel.schoolDetail?.school_name.uppercased()
+                    
+                    setupViewAfterDataLoaded()
+                }
+            })
+        })
+        
+        }
+    
+    func setupViewAfterDataLoaded () {
+        overviewTxtView.isHidden = false
+        contactInfoDownloadIndicator.stopAnimating()
+        overViewDownloadIndicator.stopAnimating()
+        contactInfoDownloadIndicator.isHidden = true
+        overViewDownloadIndicator.isHidden = true
+        self.view.reloadInputViews()
+    }
+    
+    func setupViewElements () {
+        overviewTxtView.isHidden = true
         contactInfoDownloadIndicator.isHidden = false
         overViewDownloadIndicator.isHidden = false
-        
         contactInfoDownloadIndicator.startAnimating()
         overViewDownloadIndicator.startAnimating()
-        
-
         overviewTxtView.layer.cornerRadius = 8
         headerBckgrnView.layer.cornerRadius = 8
         overviewTxtView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        
-        SchoolDetailsService.instance.getSchoolExamScore(withUrl: DETAILS_URL!) { detailList in
-            for school in detailList {
-                if school.dbn == self.dbn {
-                    DispatchQueue.main.async { [self] in
-                        self.phoneNumberLbl.text = school.phone_number
-                        self.emailLbl.text = school.website
-                        self.overviewTxtView.text = school.overview_paragraph
-                        self.adressLbl.text = school.location
-                        
-                        overviewTxtView.isHidden = false
-                        contactInfoDownloadIndicator.stopAnimating()
-                        overViewDownloadIndicator.stopAnimating()
-                        contactInfoDownloadIndicator.isHidden = true
-                        overViewDownloadIndicator.isHidden = true
-                        self.view.reloadInputViews()
-                    }
-                }
-            }
-        }
     }
     
-
     @IBAction func backBtnTapped(_ sender: Any) {
         dismiss(animated: true)
     }

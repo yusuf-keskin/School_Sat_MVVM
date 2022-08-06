@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3218661C28986056006586C0 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3218661B28986056006586C0 /* Observable.swift */; };
+		321C57A828983E7F0031D940 /* SchoolsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C57A728983E7F0031D940 /* SchoolsViewModel.swift */; };
+		321C57AA289843A90031D940 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C57A9289843A90031D940 /* DetailsViewModel.swift */; };
 		321D1E712887318900274F6E /* ExamDataServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D1E702887318900274F6E /* ExamDataServiceTest.swift */; };
 		321D1E782887407F00274F6E /* SchoolDetailsServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D1E772887407F00274F6E /* SchoolDetailsServiceTest.swift */; };
 		321D1E862887495400274F6E /* NYCSchoolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D1E852887495400274F6E /* NYCSchoolsUITests.swift */; };
@@ -45,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3218661B28986056006586C0 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		321C57A728983E7F0031D940 /* SchoolsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsViewModel.swift; sourceTree = "<group>"; };
+		321C57A9289843A90031D940 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		321D1E6E2887318900274F6E /* NYCSchoolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NYCSchoolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		321D1E702887318900274F6E /* ExamDataServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamDataServiceTest.swift; sourceTree = "<group>"; };
 		321D1E772887407F00274F6E /* SchoolDetailsServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsServiceTest.swift; sourceTree = "<group>"; };
@@ -94,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3218661D28987384006586C0 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				321C57A728983E7F0031D940 /* SchoolsViewModel.swift */,
+				321C57A9289843A90031D940 /* DetailsViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 		321D1E6F2887318900274F6E /* NYCSchoolsTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,13 +154,14 @@
 				327819FA2882B52200E38234 /* Utilities */,
 				327819F92882B51C00E38234 /* Model */,
 				327819F82882B51400E38234 /* View */,
-				327819F72882B50800E38234 /* Controller */,
+				3218661D28987384006586C0 /* View Model */,
 				327819E32882B4F200E38234 /* AppDelegate.swift */,
 				327819E52882B4F200E38234 /* SceneDelegate.swift */,
 				327819E92882B4F200E38234 /* Main.storyboard */,
 				327819EC2882B4F400E38234 /* Assets.xcassets */,
 				327819EE2882B4F400E38234 /* LaunchScreen.storyboard */,
 				327819F12882B4F400E38234 /* Info.plist */,
+				3218661B28986056006586C0 /* Observable.swift */,
 			);
 			path = "20220716-YusufKeskin-NYCSchools";
 			sourceTree = "<group>";
@@ -163,6 +179,7 @@
 		327819F82882B51400E38234 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				327819F72882B50800E38234 /* Controller */,
 				32781A032882C6CE00E38234 /* SchoolListCell.swift */,
 			);
 			path = View;
@@ -343,14 +360,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				321C57A828983E7F0031D940 /* SchoolsViewModel.swift in Sources */,
 				32829F322882F3B7002B608E /* ExamDataService.swift in Sources */,
 				32829F362882F3EC002B608E /* Constants.swift in Sources */,
 				32829F2E2882EF3F002B608E /* School.swift in Sources */,
+				321C57AA289843A90031D940 /* DetailsViewModel.swift in Sources */,
 				32829F342882F3DA002B608E /* SchoolDetailsService.swift in Sources */,
 				327819FD2882B98D00E38234 /* ListVC.swift in Sources */,
 				32781A022882B9BE00E38234 /* DetailsVC.swift in Sources */,
 				327819FF2882B99D00E38234 /* MainVC.swift in Sources */,
 				32829F302882EFF9002B608E /* SchoolDetails.swift in Sources */,
+				3218661C28986056006586C0 /* Observable.swift in Sources */,
 				327819E42882B4F200E38234 /* AppDelegate.swift in Sources */,
 				327819E62882B4F200E38234 /* SceneDelegate.swift in Sources */,
 				32781A042882C6CE00E38234 /* SchoolListCell.swift in Sources */,
@@ -595,6 +615,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -628,6 +649,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
