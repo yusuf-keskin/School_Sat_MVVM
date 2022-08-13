@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SchoolDetails : Codable {
+struct SchoolDetail : Codable {
     var dbn : String
     var school_name : String
     var phone_number : String

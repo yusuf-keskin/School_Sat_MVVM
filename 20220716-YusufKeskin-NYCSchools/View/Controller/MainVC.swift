@@ -11,7 +11,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var splashLabel: UILabel!
     
     var schoolList =  [School]()
-    var schoolDetailsList = [SchoolDetails]()
+    var schoolDetailsList = [SchoolDetail]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

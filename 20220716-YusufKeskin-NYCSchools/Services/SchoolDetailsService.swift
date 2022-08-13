@@ -14,7 +14,7 @@ class SchoolDetailsService {
     
     var session : SessionProtocol = URLSession.shared
     
-    func getSchoolExamScore(withUrl url : URL, completion :@escaping(_ detailsList : [SchoolDetails])->()) {
+    func getSchoolExamScore(withUrl url : URL, completion :@escaping(_ detailsList : [SchoolDetail])->()) {
         
         session.dataTask(with: url) { data, response, error in
             if error != nil {
@@ -24,7 +24,7 @@ class SchoolDetailsService {
                 
                 let decoder = JSONDecoder()
                 do {
-                   let schoolDetails =  try decoder.decode([SchoolDetails].self, from: data)
+                   let schoolDetails =  try decoder.decode([SchoolDetail].self, from: data)
                     completion(schoolDetails)
                 } catch  {
                     print(error, "Couldn't be parsed correctly")

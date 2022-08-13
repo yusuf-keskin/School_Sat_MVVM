@@ -6,23 +6,20 @@
 //
 
 class DetailsViewModel {
-    var schoolViewModel = SchoolViewModel()
     var dbn : Observable<String> = Observable("")
     
-    var schoolDetail : SchoolDetails?
+    var schoolDetail : SchoolDetail?
     
-    func getSchoolDetails (completion : @escaping (_ success: Bool)-> ()) {
+    func getSchoolDetails (completion : @escaping (_ schoolDetail: SchoolDetail)-> ()) {
 
         SchoolDetailsService.instance.getSchoolExamScore(withUrl: DETAILS_URL!) { detailsList in
-            for i in detailsList {
-                if i.dbn == self.dbn.value {
-                    self.schoolDetail = i
-                    completion(true)
+            for schoolDetail in detailsList {
+                if schoolDetail.dbn == self.dbn.value {
+                    self.schoolDetail = schoolDetail
+                    completion(schoolDetail)
                 }
             }
         }
         
     }
 }
-
-

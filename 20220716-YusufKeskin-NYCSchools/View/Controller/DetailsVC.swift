@@ -11,8 +11,8 @@ class DetailsVC: UIViewController {
     
     var detailsModel = DetailsViewModel()
     var dbn : String!
-
-        
+    
+    
     @IBOutlet weak var schoolNameLbl: UILabel!
     @IBOutlet weak var readingScoreLbl: UILabel!
     @IBOutlet weak var mathScoreLbl: UILabel!
@@ -28,28 +28,29 @@ class DetailsVC: UIViewController {
     
     @IBOutlet weak var overViewDownloadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var contactInfoDownloadIndicator: UIActivityIndicatorView!
-
+    
     
     override func viewDidLoad() {
         setupViewElements()
         
         detailsModel.dbn.value = self.dbn!
-        detailsModel.dbn.bind({ value in
-            self.detailsModel.getSchoolDetails(completion: { [self] success in
-                DispatchQueue.main.async { [self] in
-                    
-                    self.phoneNumberLbl.text = self.detailsModel.schoolDetail?.phone_number
-                    self.emailLbl.text = self.detailsModel.schoolDetail?.website
-                    self.overviewTxtView.text = self.detailsModel.schoolDetail?.overview_paragraph
-                    self.adressLbl.text = self.detailsModel.schoolDetail?.location
-                    self.schoolNameLbl.text = self.detailsModel.schoolDetail?.school_name.uppercased()
-                    
-                    setupViewAfterDataLoaded()
-                }
-            })
-        })
-        
+        detailsModel.getSchoolDetails { schoolDetail in
+            print(schoolDetail)
+            DispatchQueue.main.async { [self] in
+                
+                self.phoneNumberLbl.text = schoolDetail.phone_number
+                self.emailLbl.text = schoolDetail.website
+                self.overviewTxtView.text = schoolDetail.overview_paragraph
+                self.adressLbl.text = schoolDetail.location
+                self.schoolNameLbl.text = schoolDetail.school_name.uppercased()
+                
+                setupViewAfterDataLoaded()
+            }
+            
         }
+        
+        
+    }
     
     func setupViewAfterDataLoaded () {
         overviewTxtView.isHidden = false
@@ -76,3 +77,4 @@ class DetailsVC: UIViewController {
     }
     
 }
+
